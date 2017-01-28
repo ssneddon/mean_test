@@ -10,11 +10,13 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
           controller: 'mvUserListCtrl',
           resolve: {
             auth: function(mvIdentity, $q) {
+              var dfd = $q.defer();
               if(mvIdentity.currentUser && mvIdentity.currentUser.roles.indexOf('admin') > -1) {
                 return true;
               }else {
-                $q.reject('not authorized');
+                dfd.reject('not authorized');
               }
+              return dfd.promise
             }
           }});
 });
