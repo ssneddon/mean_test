@@ -38,7 +38,9 @@ angular.module('app').factory('mvAuth', function ($http, mvIdentity, $q, mvUser)
       }).then(function () {
         mvIdentity.currentUser = undefined;
         dfd.resolve();
-      });
+      }), function(errorMsg) {
+        dfd.reject(errorMsg) ;
+      };
       return dfd.promise;
     }
   }
