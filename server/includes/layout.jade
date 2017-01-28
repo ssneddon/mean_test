@@ -5,8 +5,12 @@ html
         link(rel="stylesheet", href="/css/bootstrap.css")
         link(rel="stylesheet", href="/vendor/toastr/toastr.css")
         link(rel="stylesheet", href="/css/site.css")
+        // this base href tag is used for the locationProvider provider in order to use html5
         base(href="/")
+    //setting the body to use the 'app' angular file as the angular app
     body(ng-app='app')
     include currentUser
+    // this createas a placeholder that will be filled in by another file
     block main-content
+    // include is how you include file directories into a jade view
     include scripts

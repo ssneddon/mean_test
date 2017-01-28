@@ -1,18 +1,24 @@
+// extends means add this view to the designated view - ../includes/layout
 extends ../includes/layout
-
+//this block main-content will be plugged into the layout view 'block' element
 block main-content
  .navbar.navbar-inverse.navbar-fixed-top
     .container
      .navbar-header
       a.navbar-brand(href="/") PCOA
-       h6 -Extreme Tech Training
+       h6 -Persona Creation Tool
      .navbar-collapse.collapse
       ul.nav.navbar-nav
        li
         a(href="/") Home
       div(ng-include="'/partials/account/navbar-login'")
  section.content
+
   div(ng-view)
 
  footer.container.text-center
-  p &copy 2016 PCOA Sam Sneddon
+  p &copy 2017 PCOA Sam Sneddon
+
+// this is wher angular will serve the view loads
+//ngView is a directive that complements the $route service by including the rendered template of the current route into the main layout (index.html) file. Every time the current route changes, the included view changes with it according to the configuration of the $route service.
+// The views that are loaded into the ng-view directive are controller in the app.js file in public/app

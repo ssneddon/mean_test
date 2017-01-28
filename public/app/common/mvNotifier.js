@@ -1,3 +1,5 @@
+
+// THIS PUTs toastr into a global variable so you can use it in dependency injection
 angular.module('app').value('mvToastr', toastr);
 
 angular.module('app').factory('mvNotifier', function(mvToastr){

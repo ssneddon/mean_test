@@ -1,3 +1,5 @@
+// this tells bower where to store the files it downloads
+
 {
     "directory": "public/vendor"
 }
