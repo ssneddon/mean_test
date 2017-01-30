@@ -14,3 +14,5 @@ angular.module('app').factory('mvNotifier', function(mvToastr){
         }
     }
 })
+
+// start with creating the server-side controller
