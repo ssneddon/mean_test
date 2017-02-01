@@ -26,6 +26,21 @@ angular.module('app').config(function ($routeProvider, $locationProvider) {
   }).when('/signup', {
     templateUrl: '/partials/account/signup'
     , controller: 'mvSignupCtrl'
+  }).when('/profile', {
+    templateUrl: '/partials/account/profile'
+    , controller: 'mvProfileCtrl'
+    , resolve: {
+      auth: function(mvIdentity, $q) {
+        var dfd = $q.defer();
+        if (mvIdentity.currentUser) {
+          return true;
+        }
+        else {
+          dfd.reject('not authorized');
+        }
+        return dfd.promise
+      }
+    }
   });
 });
 angular.module('app').run(function ($rootScope, $location) {

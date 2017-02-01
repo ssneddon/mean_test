@@ -5,6 +5,7 @@ var auth = require('./auth'),
 module.exports = function (app) {
   app.get('/api/users', auth.requiresRole ('admin'), users.getUsers);
   app.post('/api/users', users.createUser);
+  app.put('/api/users', users.updateUser);
   // the app.get partials tells angular where to get the partial view
   app.get('/partials/*', function (req, res) {
     // use the req.params to get url parameters
