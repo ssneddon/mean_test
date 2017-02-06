@@ -1,0 +1,16 @@
+.container
+ .well
+    div(gridster="gridsterOpts")
+     ul
+      li(gridster-item="item.grid", ng-repeat="item in standardItems")
+       div.ps-widget-header
+        h4(ng-click="contentEnable()", ng-blur="cardEnable()", contenteditable="true", ng-model="item.cardInfo.cardTitle"){{item.cardInfo.cardTitle}}
+        div.ps-widget-header-buttons
+         button.btn.btn-default.pull-right
+          i.fa.fa-remove
+         button.btn.btn-default.pull-right
+          i.fa.fa-gear
+
+       div.ps-widget-body
+        div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true" ng-model="userSheet.cardInfo.cardBody"){{userSheet.cardInfo.cardBody}}
+

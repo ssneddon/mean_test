@@ -1,4 +1,5 @@
-angular.module('app').controller('mvMainCtrl', function($scope) {
+angular.module('app').controller('mvMainCtrl', function($scope, mvIdentity) {
+    $scope.identity = mvIdentity;
     $scope.courses = [
 
     {name: 'C# for Sociopaths', featured: true, published: new Date('10/5/2013')},

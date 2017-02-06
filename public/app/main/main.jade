@@ -7,7 +7,7 @@
  // ng-include Fetches, compiles and includes an external HTML fragment
   div(ng-include="'/partials/main/featured-courses'")
  .col-md-4
-  div(ng-include="'/partials/main/new-courses'")
+  div(ng-include="'/partials/main/new-courses'")(ng-show="identity.isAuthenticated()")
  .col-md-4
-  div(ng-include="'/partials//main/user-data'")
+  div(ng-include="'/partials/main/new-persona-link'")(ng-show="identity.isAuthenticated()")
 

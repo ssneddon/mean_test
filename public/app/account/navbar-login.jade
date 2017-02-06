@@ -2,7 +2,7 @@
  form.navbar-form(ng-hide="identity.isAuthenticated()")
   ul.nav.navbar-nav
    li
-    a(href="/signup") Sign Up
+    a(href="/signup") Sign up
   .form-group
    input.form-control(placeholder="Email", ng-model="username")
   .form-group
@@ -10,12 +10,15 @@
   button.btn.btn-primary(ng-click="signin(username, password)") Sign In
  ul.nav.navbar-nav.navbar-right(ng-show="identity.isAuthenticated()")
   li.dropdown
-   a.dropdown-toggle(href="", data-toggle="dropdown") | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
+   a.dropdown-toggle(href="", data-toggle="dropdown")
+    | {{identity.currentUser.firstName + " " + identity.currentUser.lastName}}
     b.caret
    ul.dropdown-menu
     li(ng-show="identity.currentUser.isAdmin()")
-      a(href="/admin/users") User Admin
+     a(href="/admin/users") User Admin
     li
-      a(href="/profile") User Profile
+     a(href="/profile") Profile
+    li
+     a(href="/personas") Personas
     li
      a(href="", ng-click="signout()") Sign Out

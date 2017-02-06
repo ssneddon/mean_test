@@ -1,52 +1,38 @@
-// this is the start of the angular implementation. define a module - called app - and require ngRoute and ngResource
-angular.module('app', ['ngResource', 'ngRoute']);
-//location provider provides for html5
-angular.module('app').config(function ($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode(true);
-  $routeProvider
-  // Angular is telling the server, that when a request is made for the index page, serve the /partials/main/main templateUrl and mvMainCtrl controller to the ng-view directive in the index.jade file
-    .when('/', {
-    templateUrl: '/partials/main/main'
-    , controller: 'mvMainCtrl'
-  }).when('/admin/users', {
-    templateUrl: '/partials/admin/user-list'
-    , controller: 'mvUserListCtrl'
-    , resolve: {
-      auth: function (mvIdentity, $q) {
-        var dfd = $q.defer();
-        if (mvIdentity.currentUser && mvIdentity.currentUser.roles.indexOf('admin') > -1) {
-          return true;
-        }
-        else {
-          dfd.reject('not authorized');
-        }
-        return dfd.promise
-      }
+angular.module('app', ['ngResource', 'ngRoute', 'gridster']);
+
+angular.module('app').config(function($routeProvider, $locationProvider) {
+    var routeRoleChecks = {
+        admin: {auth: function(mvAuth) {
+            return mvAuth.authorizeCurrentUserForRoute('admin')
+        }},
+        user: {auth: function(mvAuth) {
+            return mvAuth.authorizeAuthenticatedUserForRoute()
+        }}
     }
-  }).when('/signup', {
-    templateUrl: '/partials/account/signup'
-    , controller: 'mvSignupCtrl'
-  }).when('/profile', {
-    templateUrl: '/partials/account/profile'
-    , controller: 'mvProfileCtrl'
-    , resolve: {
-      auth: function(mvIdentity, $q) {
-        var dfd = $q.defer();
-        if (mvIdentity.currentUser) {
-          return true;
-        }
-        else {
-          dfd.reject('not authorized');
-        }
-        return dfd.promise
-      }
-    }
-  });
+
+    $locationProvider.html5Mode(true);
+    $routeProvider
+        .when('/', { templateUrl: '/partials/main/main', controller: 'mvMainCtrl'})
+        .when('/admin/users', { templateUrl: '/partials/admin/user-list',
+            controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
+        })
+        .when('/signup', { templateUrl: '/partials/account/signup',
+            controller: 'mvSignupCtrl'
+        })
+        .when('/profile', { templateUrl: '/partials/account/profile',
+            controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
+        })
+        .when('/new-persona', { templateUrl: '/partials/account/newPersona',
+            controller: 'mvPersonaCtrl', resolve: routeRoleChecks.user
+        })
+
+
 });
-angular.module('app').run(function ($rootScope, $location) {
-  $rootScope.$on('$routeChangeError', function (evt, current, previous, rejection) {
-    if (rejection === 'not authorized') {
-      $location.path('/');
-    }
-  })
+
+angular.module('app').run(function($rootScope, $location) {
+    $rootScope.$on('$routeChangeError', function(evt, current, previous, rejection) {
+        if(rejection === 'not authorized') {
+            $location.path('/');
+        }
+    })
 })
