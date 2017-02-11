@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-    encrypt = require('../utilities/encryption');
+    encrypt = require('../utilities/encryption'),
+    personaSchema = require('./personaSchema');
 
 var userSchema = mongoose.Schema({
     firstName: {type:String, required:'{PATH} is required!'},
@@ -11,7 +12,8 @@ var userSchema = mongoose.Schema({
     },
     salt: {type:String, required:'{PATH} is required!'},
     hashed_pwd: {type:String, required:'{PATH} is required!'},
-    roles: [String]
+    roles: [String],
+    personaCollection:[personaSchema]
 });
 userSchema.methods = {
     authenticate: function(passwordToMatch) {

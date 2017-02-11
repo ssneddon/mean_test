@@ -36,6 +36,22 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
             angular.extend(clone, newUserData);
             clone.$update().then(function() {
                 mvIdentity.currentUser = clone;
+
+                dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
+            });
+            return dfd.promise;
+        },
+
+        updateUserPersonas: function(newPersonaData) {
+            var dfd = $q.defer();
+
+            var clone = angular.copy(mvIdentity.currentUser);
+            clone.personaCollection.push(newPersonaData);
+            clone.$update().then(function() {
+                mvIdentity.currentUser = clone;
+                console.log(mvIdentity.currentUser);
                 dfd.resolve();
             }, function(response) {
                 dfd.reject(response.data.reason);

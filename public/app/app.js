@@ -12,7 +12,10 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
 
     $locationProvider.html5Mode(true);
     $routeProvider
-        .when('/', { templateUrl: '/partials/main/main', controller: 'mvMainCtrl'})
+        .when('/', { templateUrl: 'partials/main/main'})
+        .when('/main', { templateUrl: '/partials/main/userMain',
+            controller: 'mvMainCtrl', resolve: routeRoleChecks.user
+        })
         .when('/admin/users', { templateUrl: '/partials/admin/user-list',
             controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
         })
@@ -22,7 +25,7 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
         .when('/profile', { templateUrl: '/partials/account/profile',
             controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
         })
-        .when('/new-persona', { templateUrl: '/partials/account/newPersona',
+        .when('/new-persona', { templateUrl: '/partials/persona/newPersona',
             controller: 'mvPersonaCtrl', resolve: routeRoleChecks.user
         })
 

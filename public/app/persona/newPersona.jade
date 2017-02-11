@@ -1,0 +1,29 @@
+.container
+ nav.navbar.navbar-default.persona-navbar
+  div.container-fluid
+   div.navbar-header
+    a.navbar-brand
+    img(alt="Brand", src="...")
+   div.personaTitle
+    h1(contenteditable="true", ng-model="personaLayout.personaTitle"){{personaLayout.personaTitle}}
+   button.btn.btn-default.navbar-btn.pull-right(ng-click="saveDashboardLayout()")
+    i.fa.fa-check-circle
+    span.personaButtonText Save Persona
+   button.btn.btn-default.navbar-btn.pull-right(ng-click="addNewCard()")
+    i.fa.fa-plus-circle
+    span.personaButtonText New Card
+
+ div(gridster="gridsterOpts")
+    ul
+      li(gridster-item="persona.grid", ng-repeat="persona in personaLayout.personaInfo")
+       div.ps-widget-header
+        h4(ng-click="contentEnable()", ng-blur="cardEnable()", contenteditable="true", ng-model="persona.cardInfo.cardTitle"){{persona.cardInfo.cardTitle}}
+        div.ps-widget-header-buttons
+         button.btn.btn-default.pull-right(ng-click="removeCard()")
+          i.fa.fa-remove
+         button.btn.btn-default.pull-right
+          i.fa.fa-gear
+
+       div.ps-widget-body
+        div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
+
