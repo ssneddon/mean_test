@@ -28,6 +28,9 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
         .when('/new-persona', { templateUrl: '/partials/persona/newPersona',
             controller: 'mvPersonaCtrl', resolve: routeRoleChecks.user
         })
+      .when('/persona/:personaId', { templateUrl: '/partials/persona/savedPersona',
+            controller: 'mvSavedPersonaCtrl', resolve: routeRoleChecks.user
+        })
 
 
 });

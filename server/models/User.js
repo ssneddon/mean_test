@@ -1,6 +1,12 @@
 var mongoose = require('mongoose'),
-    encrypt = require('../utilities/encryption'),
-    personaSchema = require('./personaSchema');
+    encrypt = require('../utilities/encryption');
+
+var personaSchema = mongoose.Schema({
+
+  personaDetails: {
+    type:Object
+  }
+});
 
 var userSchema = mongoose.Schema({
     firstName: {type:String, required:'{PATH} is required!'},

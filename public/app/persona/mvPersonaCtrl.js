@@ -48,16 +48,13 @@ angular.module('app').controller('mvPersonaCtrl', function($scope, mvAuth, mvIde
             personaDetails: $scope.personaLayout
         }
 
-        mvAuth.updateUserPersonas(newPersonaData).then(function() {
-            mvNotifier.notify('Your user account has been updated');
+        mvAuth.addUserPersona(newPersonaData).then(function() {
+            mvNotifier.notify('Your new persona has been added to your account');
         }, function(reason) {
             mvNotifier.error(reason);
         })
     };
-    $scope.loadDashboardLayout = function loadDashboardLayout() {
-        scope.userSheets = angular.fromJson(sessionStorage.userSheets);
-        console.log(scope.userSheets);
-    };
+
     $scope.contentEnable = function() {
         $scope.gridsterOpts = {
             draggable:{

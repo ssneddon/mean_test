@@ -10,7 +10,7 @@ angular.module('app').controller('mvSignupCtrl', function($scope, mvUser, mvNoti
 
         mvAuth.createUser(newUserData).then(function() {
             mvNotifier.notify('User account created!');
-            $location.path('/');
+            $location.path('/main');
         }, function(reason) {
             mvNotifier.error(reason);
         })

@@ -2,5 +2,6 @@
  .panel-heading.text-center My Personas
  .panel-body
   .row(ng-repeat="persona in personas")
-   .col-md-9 {{persona.personaDetails.personaTitle}}
+   .col-md-9
+    a(ng-href="/persona/{{persona._id}}") {{persona.personaDetails.personaTitle}}
    //.col-md-9 {{course.name}}
