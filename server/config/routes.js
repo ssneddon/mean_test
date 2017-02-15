@@ -1,6 +1,5 @@
 var auth = require('./auth'),
     users = require('../controllers/users'),
-    personas = require('../controllers/personaTest'),
     mongoose = require('mongoose'),
     User = mongoose.model('User');
 
