@@ -1,12 +1,12 @@
-angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) {
+angular.module('app').factory('pcAuth', function($http, pcIdentity, $q, pcUser) {
     return {
         authenticateUser: function(username, password) {
             var dfd = $q.defer();
             $http.post('/login', {username:username, password:password}).then(function(response) {
                 if(response.data.success) {
-                    var user = new mvUser();
+                    var user = new pcUser();
                     angular.extend(user, response.data.user);
-                    mvIdentity.currentUser = user;
+                    pcIdentity.currentUser = user;
                     dfd.resolve(true);
                 } else {
                     dfd.resolve(false);
@@ -16,11 +16,11 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
         },
 
         createUser: function(newUserData) {
-            var newUser = new mvUser(newUserData);
+            var newUser = new pcUser(newUserData);
             var dfd = $q.defer();
 
             newUser.$save().then(function() {
-                mvIdentity.currentUser = newUser;
+                pcIdentity.currentUser = newUser;
                 dfd.resolve();
             }, function(response) {
                 dfd.reject(response.data.reason);
@@ -32,10 +32,10 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
         updateCurrentUser: function(newUserData) {
             var dfd = $q.defer();
 
-            var clone = angular.copy(mvIdentity.currentUser);
+            var clone = angular.copy(pcIdentity.currentUser);
             angular.extend(clone, newUserData);
             clone.$update().then(function() {
-                mvIdentity.currentUser = clone;
+                pcIdentity.currentUser = clone;
 
                 dfd.resolve();
             }, function(response) {
@@ -47,10 +47,10 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
         addUserPersona: function(newPersonaData) {
             var dfd = $q.defer();
 
-            var clone = angular.copy(mvIdentity.currentUser);
+            var clone = angular.copy(pcIdentity.currentUser);
             clone.personaCollection.push(newPersonaData);
             clone.$update().then(function() {
-                mvIdentity.currentUser = clone;
+                pcIdentity.currentUser = clone;
                 dfd.resolve();
             }, function(response) {
                 dfd.reject(response.data.reason);
@@ -61,7 +61,7 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
       deleteUserPersona: function(deletedPersonaData, personaId) {
         var dfd = $q.defer();
 
-        var clone = angular.copy(mvIdentity.currentUser);
+        var clone = angular.copy(pcIdentity.currentUser);
         angular.forEach(clone.personaCollection, function(persona) {
           if(persona._id === personaId) {
             clone.personaCollection.splice(clone.personaCollection.indexOf(persona), 1);
@@ -69,7 +69,7 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
           }
         })
         clone.$update().then(function() {
-          mvIdentity.currentUser = clone;
+          pcIdentity.currentUser = clone;
 
           dfd.resolve();
         }, function(response) {
@@ -83,7 +83,7 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
       updateUserPersona: function(updatedPersonaData) {
         var dfd = $q.defer();
 
-        var clone = angular.copy(mvIdentity.currentUser);
+        var clone = angular.copy(pcIdentity.currentUser);
         angular.forEach(clone.personaCollection, function(persona) {
           if(persona._id === updatedPersonaData._id) {
             clone.personaCollection.splice(clone.personaCollection.indexOf(persona), 1, updatedPersonaData);
@@ -91,7 +91,7 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
           }
         })
         clone.$update().then(function() {
-          mvIdentity.currentUser = clone;
+          pcIdentity.currentUser = clone;
 
           dfd.resolve();
         }, function(response) {
@@ -104,13 +104,13 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
         logoutUser: function() {
             var dfd = $q.defer();
             $http.post('/logout', {logout:true}).then(function() {
-                mvIdentity.currentUser = undefined;
+                pcIdentity.currentUser = undefined;
                 dfd.resolve();
             });
             return dfd.promise;
         },
         authorizeCurrentUserForRoute: function(role) {
-            if(mvIdentity.isAuthorized(role)) {
+            if(pcIdentity.isAuthorized(role)) {
                 return true;
             } else {
                 return $q.reject('not authorized');
@@ -118,7 +118,7 @@ angular.module('app').factory('mvAuth', function($http, mvIdentity, $q, mvUser) 
 
         },
         authorizeAuthenticatedUserForRoute: function() {
-            if(mvIdentity.isAuthenticated()) {
+            if(pcIdentity.isAuthenticated()) {
                 return true;
             } else {
                 return $q.reject('not authorized');

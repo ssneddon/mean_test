@@ -1,8 +1,8 @@
-angular.module('app').controller('mvSavedPersonaCtrl', function($scope, $routeParams, $location, mvAuth, mvIdentity, mvNotifier) {
+angular.module('app').controller('pcSavedPersonaCtrl', function($scope, $routeParams, $location, pcAuth, pcIdentity, pcNotifier) {
 
   $scope.personaId = $routeParams.personaId;
 
-  angular.forEach(mvIdentity.currentUser.personaCollection, function(persona) {
+  angular.forEach(pcIdentity.currentUser.personaCollection, function(persona) {
     if(persona._id === $routeParams.personaId) {
       $scope.personaLayout = persona.personaDetails
     }
@@ -43,12 +43,12 @@ angular.module('app').controller('mvSavedPersonaCtrl', function($scope, $routePa
 
     var personaId = $scope.personaId;
 
-    mvAuth.deleteUserPersona(deletedPersonaData, personaId).then(function() {
-      mvNotifier.notify('Your persona has been delete');
+    pcAuth.deleteUserPersona(deletedPersonaData, personaId).then(function() {
+      pcNotifier.notify('Your persona has been delete');
       $location.path('/main');
 
     }, function(reason) {
-      mvNotifier.error(reason);
+      pcNotifier.error(reason);
     })
   };
 
@@ -59,12 +59,12 @@ angular.module('app').controller('mvSavedPersonaCtrl', function($scope, $routePa
       _id: $routeParams.personaId
     };
 
-    mvAuth.updateUserPersona(updatedPersonaData).then(function() {
-      mvNotifier.notify('Your persona has been updated');
+    pcAuth.updateUserPersona(updatedPersonaData).then(function() {
+      pcNotifier.notify('Your persona has been updated');
       $location.path('/main');
 
     }, function(reason) {
-      mvNotifier.error(reason);
+      pcNotifier.error(reason);
     })
   };
 

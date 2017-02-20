@@ -1,6 +1,6 @@
-angular.module('app').controller('mvUserListCtrl', function($scope, $q, mvUser) {
+angular.module('app').controller('pcUserListCtrl', function($scope, $q, pcUser) {
   var deferredObject = $q.defer();
-  mvUser
+  pcUser
     .query()
     .$promise
     .then(function(result) {

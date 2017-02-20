@@ -1,4 +1,4 @@
-angular.module('app').controller('mvPersonaCtrl', function($scope, mvAuth, mvIdentity, mvNotifier) {
+angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIdentity, pcNotifier) {
 
     $scope.gridsterOpts = {
         columns: 12
@@ -48,10 +48,10 @@ angular.module('app').controller('mvPersonaCtrl', function($scope, mvAuth, mvIde
             personaDetails: $scope.personaLayout
         }
 
-        mvAuth.addUserPersona(newPersonaData).then(function() {
-            mvNotifier.notify('Your new persona has been added to your account');
+        pcAuth.addUserPersona(newPersonaData).then(function() {
+            pcNotifier.notify('Your new persona has been added to your account');
         }, function(reason) {
-            mvNotifier.error(reason);
+            pcNotifier.error(reason);
         })
     };
 

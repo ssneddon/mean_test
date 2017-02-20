@@ -2,11 +2,11 @@ angular.module('app', ['ngResource', 'ngRoute', 'gridster']);
 
 angular.module('app').config(function($routeProvider, $locationProvider) {
     var routeRoleChecks = {
-        admin: {auth: function(mvAuth) {
-            return mvAuth.authorizeCurrentUserForRoute('admin')
+        admin: {auth: function(pcAuth) {
+            return pcAuth.authorizeCurrentUserForRoute('admin')
         }},
-        user: {auth: function(mvAuth) {
-            return mvAuth.authorizeAuthenticatedUserForRoute()
+        user: {auth: function(pcAuth) {
+            return pcAuth.authorizeAuthenticatedUserForRoute()
         }}
     }
 
@@ -14,22 +14,22 @@ angular.module('app').config(function($routeProvider, $locationProvider) {
     $routeProvider
         .when('/', { templateUrl: 'partials/main/main'})
         .when('/main', { templateUrl: '/partials/main/userMain',
-            controller: 'mvMainCtrl', resolve: routeRoleChecks.user
+            controller: 'pcMainCtrl', resolve: routeRoleChecks.user
         })
         .when('/admin/users', { templateUrl: '/partials/admin/user-list',
-            controller: 'mvUserListCtrl', resolve: routeRoleChecks.admin
+            controller: 'pcUserListCtrl', resolve: routeRoleChecks.admin
         })
         .when('/signup', { templateUrl: '/partials/account/signup',
-            controller: 'mvSignupCtrl'
+            controller: 'pcSignupCtrl'
         })
         .when('/profile', { templateUrl: '/partials/account/profile',
-            controller: 'mvProfileCtrl', resolve: routeRoleChecks.user
+            controller: 'pcProfileCtrl', resolve: routeRoleChecks.user
         })
         .when('/new-persona', { templateUrl: '/partials/persona/newPersona',
-            controller: 'mvPersonaCtrl', resolve: routeRoleChecks.user
+            controller: 'pcPersonaCtrl', resolve: routeRoleChecks.user
         })
       .when('/persona/:personaId', { templateUrl: '/partials/persona/savedPersona',
-            controller: 'mvSavedPersonaCtrl', resolve: routeRoleChecks.user
+            controller: 'pcSavedPersonaCtrl', resolve: routeRoleChecks.user
         })
 
 
