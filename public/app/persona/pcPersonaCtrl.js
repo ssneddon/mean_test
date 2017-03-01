@@ -27,7 +27,6 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
 
     $scope.addNewCard = function() {
         var newCard = {"grid":{"sizeX":4,"sizeY":3},"cardInfo":{"cardTitle":"New Card"}};
-           // newCardCopy = angular.copy(newCard);
 
         $scope.personaLayout.personaInfo.push(newCard);
         console.log($scope.personaLayout);
@@ -74,8 +73,6 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
                 , handles: ['se']
             }
         }
-
-        console.log($scope.gridsterOpts)
     };
 
 })

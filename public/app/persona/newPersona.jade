@@ -14,15 +14,20 @@
     span.personaButtonText New Card
 
  div(gridster="gridsterOpts")
+
     ul
+
       li(gridster-item="persona.grid", ng-repeat="persona in personaLayout.personaInfo")
-       div.ps-widget-header
-        h4(ng-click="contentEnable()", ng-blur="cardEnable()", contenteditable="true", ng-model="persona.cardInfo.cardTitle"){{persona.cardInfo.cardTitle}}
-        div.ps-widget-header-buttons
-         button.btn.btn-default.pull-right(ng-click="removeCard()")
-          i.fa.fa-remove
+         image-upload
+         div.ps-widget-header
+          h4(ng-click="contentEnable()", ng-blur="cardEnable()", contenteditable="true", ng-model="persona.cardInfo.cardTitle"){{persona.cardInfo.cardTitle}}
+          div.ps-widget-header-buttons
+           button.btn.btn-default.pull-right(ng-click="removeCard()")
+            i.fa.fa-remove
+           button.btn.btn-default.pull-right(data-toggle="modal" data-target="#imageUpload{{$index}}")
+            i.fa.fa-image
 
-
-       div.ps-widget-body
-        div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
+         div.ps-widget-body
+          img(ng-src="{{persona.cardInfo.croppedDataUrl}}")
+          div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
 

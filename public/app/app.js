@@ -1,4 +1,4 @@
-angular.module('app', ['ngResource', 'ngRoute', 'gridster']);
+angular.module('app', ['ngResource', 'ngRoute', 'gridster','ngImgCrop', 'ngFileUpload']);
 
 angular.module('app').config(function($routeProvider, $locationProvider) {
     var routeRoleChecks = {
