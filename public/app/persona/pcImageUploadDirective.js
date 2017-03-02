@@ -19,7 +19,17 @@ angular.module('app').directive("imageUpload", ['Upload','$timeout', function(Up
         }, function (evt) {
           scope.progress = parseInt(100.0 * evt.loaded / evt.total);
         });
-      }
+      };
+
+    scope.cardArrange = function() {
+      console.log(element.parent());
+      element.parent().addClass("highCard");
+    };
+
+    scope.cardClassRemove = function() {
+
+    }
+
     }
 
   }

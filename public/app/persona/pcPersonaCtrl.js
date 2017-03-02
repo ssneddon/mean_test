@@ -74,5 +74,10 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
             }
         }
     };
+ /* $scope.cardArrange = function() {
+    var thisCard = this.$parent.$element;
+    console.log(thisCard);
+    //thisCard.addClass("higherCard");
+  }*/
 
 })

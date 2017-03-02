@@ -16,8 +16,8 @@ module.exports = function(app, config) {
     app.set('view engine', 'jade');
     app.use(logger('dev'));
     app.use(cookieParser());
-    app.use(bodyParser.urlencoded({extended:true}));
-    app.use(bodyParser.json());
+    app.use(bodyParser.urlencoded({limit: '1mb', extended:true}));
+    app.use(bodyParser.json({limit: '1mb'}));
     app.use(session({secret: 'multi vision unicorns',resave:false,saveUninitialized:false}));
     app.use(passport.initialize());
     app.use(passport.session());

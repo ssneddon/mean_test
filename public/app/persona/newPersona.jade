@@ -24,7 +24,7 @@
           div.ps-widget-header-buttons
            button.btn.btn-default.pull-right(ng-click="removeCard()")
             i.fa.fa-remove
-           button.btn.btn-default.pull-right(data-toggle="modal" data-target="#imageUpload{{$index}}")
+           button.btn.btn-default.pull-right(data-toggle="modal", data-target="#imageUpload{{$index}}", ng-click="cardArrange()")
             i.fa.fa-image
 
          div.ps-widget-body

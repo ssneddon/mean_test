@@ -151,3 +151,6 @@ form .progress {
   background: #ffa500;
   width: 0;
 }
+.highCard {
+  z-index: 2000;
+}
