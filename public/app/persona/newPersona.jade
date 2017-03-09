@@ -24,10 +24,10 @@
           div.ps-widget-header-buttons
            button.btn.btn-default.pull-right(ng-click="removeCard()")
             i.fa.fa-remove
-           button.btn.btn-default.pull-right(data-toggle="modal", data-target="#imageUpload{{$index}}", ng-click="cardArrange()")
+           button.btn.btn-default.pull-right(data-toggle="modal" data-backdrop="false" data-target="#imageUpload{{$index}}" ng-click="cardArrange()")
             i.fa.fa-image
 
          div.ps-widget-body
-          img(ng-src="{{persona.cardInfo.croppedDataUrl}}")
+          img(ng-src="{{persona.cardInfo.myCroppedImage}}")
           div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
 

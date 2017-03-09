@@ -1,19 +1,18 @@
 div.modal.fade(role="dialog", id="{{'imageUpload' + $index}}")
   div.modal-dialog
     div.modal-content
+      form(action "/" method="POST" enctype="multipart/form-data")
         div.modal-header
-          h4 Crop Image and Upload
-          button(ngf-select ng-model="persona.cardInfo.picFile" accept="/image/*") Select Picture
-          button.close(data-dismiss="modal", ng-click="cardClassRemove")
+          h4(style="display:inline-block;") Crop Image and Upload
+          button.close(data-dismiss="modal", ng-click="cardClassRemove()")
             i.fa.fa-remove
+          input.inputFile(type="file")
         div.modal-body
-          div.cropArea(ngf-drop ng-model="persona.cardInfo.picFile" ngf-pattern="/image/*")
-            img-crop(image="persona.cardInfo.picFile | ngfDataUrl"  result-image="persona.cardInfo.croppedDataUrl" ng-init="persona.cardInfo.croppedDataUrl=''" area-type="square")
+          div.cropArea
+            img-crop(image="myImage"  result-image="smallImage" area-type="square")
           div
-            img(ng-src="{{persona.cardInfo.croppedDataUrl}}")
-            button(ng-click="upload(persona.cardInfo.croppedDataUrl, persona.cardInfo.picFile.name)") Submit
-          span.progress(ng-show="progress >= 0")
-            div(style="width:{{progress}}%" ng-bind="progress + '%'")
+            img(ng-src="{{smallImage}}")
+            input(type="submit" name="submit" value="submit")
           span(ng-show="result") Upload Successful
           span.err(ng-show="errorMsg"){{errorMsg}}
 

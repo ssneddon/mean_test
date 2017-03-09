@@ -1,36 +1,36 @@
-angular.module('app').directive("imageUpload", ['Upload','$timeout', function(Upload, $timeout ) {
+angular.module('app').directive("imageUpload", function () {
   return {
-    restrict: 'E',
-    templateUrl: '/partials/persona/imageUploader',
-    link: function (scope, element, attrs) {
-      scope.upload = function (dataUrl, name) {
-        Upload.upload({
-          url: 'https://angular-file-upload-cors-srv.appspot.com/upload',
-          data: {
-            file: Upload.dataUrltoBlob(dataUrl, name)
-          },
-        }).then(function (response) {
-          $timeout(function () {
-            scope.result = response.data;
-          });
-        }, function (response) {
-          if (response.status > 0) scope.errorMsg = response.status
-            + ': ' + response.data;
-        }, function (evt) {
-          scope.progress = parseInt(100.0 * evt.loaded / evt.total);
-        });
+    restrict: 'E'
+    , templateUrl: '/partials/persona/imageUploader'
+    , link: function (scope, element, attrs) {
+
+      scope.myImage = '';
+      scope.smallImage = '';
+
+      scope.cardArrange = function () {
+       // var imageInput = angular.element(document).find('#inputFile');
+        //var imageInput = angular.element(document.querySelector('#input'))
+        //console.log(imageInput);
+        //imageInput.css('background-color', 'red');
+        element.parent().addClass("highCard");
       };
 
-    scope.cardArrange = function() {
-      console.log(element.parent());
-      element.parent().addClass("highCard");
-    };
+      scope.cardClassRemove = function () {
+        console.log(element.parent());
+        element.parent().removeClass("highCard");
+      };
 
-    scope.cardClassRemove = function() {
-
+      function handleFileSelect (evt) {
+        var file = evt.currentTarget.files[0];
+        var reader = new FileReader();
+        reader.onload = function (evt) {
+          scope.$apply(function(scope){
+            scope.myImage=evt.target.result;
+          });
+        };
+        reader.readAsDataURL(file);
+      };
+      angular.element(document).find('.inputFile').on('change',handleFileSelect);
     }
-
-    }
-
   }
-}])
+})
