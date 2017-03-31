@@ -20,6 +20,10 @@ footer p {
 .navbar-form button {
   margin-left: 10px;
 }
+.jumbotron {
+  background: none;
+  color: #005952;
+}
 .toast-top-right {
   top: 70px;
 }
@@ -137,6 +141,17 @@ select:-webkit-autofill {
   overflow: hidden;
   width: 500px;
   height: 350px;
+  margin: 0 auto;
+}
+.cropPreview {
+  display: block;
+  margin: 20px auto;
+  border: 3px solid #149c82;
+}
+.widgetImage {
+  display: block;
+  margin: 20px auto;
+  border: 3px solid #149c82;
 }
 form .progress {
   line-height: 15px;

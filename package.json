@@ -6,9 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  // you need to set the engine object in your package file for the Heroku deplyment
-  // you also create the Procfile in the root directory and type 'web: node server.js - this tells heroku what command to run when it runs
-  "engines" :{
+  "engines": {
     "node": "4.6.x",
     "npm": "2.15.x"
   },

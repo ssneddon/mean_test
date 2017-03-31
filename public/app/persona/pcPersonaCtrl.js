@@ -41,8 +41,8 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
     };
 
     $scope.saveDashboardLayout = function () {
-        //sessionStorage.personaLayout = angular.toJson($scope.personaLayout);
-        //console.log(sessionStorage.personaLayout);
+        sessionStorage.personaLayout = angular.toJson($scope.personaLayout);
+        console.log(sessionStorage.personaLayout);
         var newPersonaData = {
             personaDetails: $scope.personaLayout
         }

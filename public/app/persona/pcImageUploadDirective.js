@@ -18,19 +18,14 @@ angular.module('app').directive("imageUpload", function () {
       scope.cardClassRemove = function () {
         console.log(element.parent());
         element.parent().removeClass("highCard");
+        scope.picFile = '';
+        scope.croppedDataUrl = '';
       };
 
-      function handleFileSelect (evt) {
-        var file = evt.currentTarget.files[0];
-        var reader = new FileReader();
-        reader.onload = function (evt) {
-          scope.$apply(function(scope){
-            scope.myImage=evt.target.result;
-          });
-        };
-        reader.readAsDataURL(file);
-      };
-      angular.element(document).find('.inputFile').on('change',handleFileSelect);
+      scope.upload = function (croppedImage) {
+        scope.persona.cardInfo.croppedImage = croppedImage;
+      }
+
     }
   }
 })

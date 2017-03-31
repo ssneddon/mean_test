@@ -27,5 +27,6 @@
 
 
         div.ps-widget-body
+          img.widgetImage(ng-show="persona.cardInfo.croppedImage" ng-src="{{persona.cardInfo.croppedImage}}")
           div(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
 
