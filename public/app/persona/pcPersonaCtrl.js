@@ -6,7 +6,7 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
         , pushing: true
         , floating: true
         , resizable: {
-            enabled: true
+            enabled: false
             , handles: ['se']
         }
     };
@@ -15,18 +15,18 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
 
         "personaTitle": "Persona Title",
         "personaInfo": [
-            {"grid":{"sizeX":4,"sizeY":3,"row":0,"col":0},"cardInfo":{"cardTitle":"Persona Name"}},
-            {"grid":{"sizeX":4,"sizeY":3,"row":0,"col":4},"cardInfo":{"cardTitle":"Biography"}},
-            {"grid":{"sizeX":4,"sizeY":3,"row":0,"col":8},"cardInfo":{"cardTitle":"Identifiers"}},
-            {"grid":{"sizeX":4,"sizeY":3,"row":3,"col":0},"cardInfo":{"cardTitle":"Demographics"}},
-            {"grid":{"sizeX":4,"sizeY":3,"row":3,"col":4},"cardInfo":{"cardTitle":"Goals"}},
-            {"grid":{"sizeX":4,"sizeY":3,"row":3,"col":8},"cardInfo":{"cardTitle":"Always/Never"}}
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":0},"cardInfo":{"cardTitle":"Persona Name"}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":4},"cardInfo":{"cardTitle":"Biography"}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":8},"cardInfo":{"cardTitle":"Identifiers"}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":0},"cardInfo":{"cardTitle":"Demographics"}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":4},"cardInfo":{"cardTitle":"Goals"}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":8},"cardInfo":{"cardTitle":"Always/Never"}}
         ]
 
     };
 
     $scope.addNewCard = function() {
-        var newCard = {"grid":{"sizeX":4,"sizeY":3},"cardInfo":{"cardTitle":"New Card"}};
+        var newCard = {"grid":{"sizeX":4,"sizeY":4},"cardInfo":{"cardTitle":"New Card"}};
 
         $scope.personaLayout.personaInfo.push(newCard);
         console.log($scope.personaLayout);
