@@ -1,4 +1,4 @@
-angular.module('app').factory('pcAuth', function($http, pcIdentity, $q, pcUser) {
+angular.module('app').factory('pcAuth', function($http, $window, pcIdentity, $q, pcUser) {
     return {
         authenticateUser: function(username, password) {
             var dfd = $q.defer();
@@ -101,14 +101,19 @@ angular.module('app').factory('pcAuth', function($http, pcIdentity, $q, pcUser) 
       },
       // update persona from collection
 
-        logoutUser: function() {
+      logoutUser: function(updatedPersonaData) {
+
             var dfd = $q.defer();
+
             $http.post('/logout', {logout:true}).then(function() {
+
                 pcIdentity.currentUser = undefined;
                 dfd.resolve();
             });
             return dfd.promise;
         },
+
+
         authorizeCurrentUserForRoute: function(role) {
             if(pcIdentity.isAuthorized(role)) {
                 return true;

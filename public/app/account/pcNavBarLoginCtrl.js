@@ -1,4 +1,4 @@
-angular.module('app').controller('pcNavBarLoginCtrl', function($scope, $http, $location, pcIdentity, pcNotifier, pcAuth){
+angular.module('app').controller('pcNavBarLoginCtrl', function($scope, $http, $routeParams, $location, pcIdentity, pcNotifier, pcAuth){
     $scope.identity = pcIdentity;
     $scope.signin = function(username, password){
         pcAuth.authenticateUser(username, password).then(function(success){
@@ -13,7 +13,12 @@ angular.module('app').controller('pcNavBarLoginCtrl', function($scope, $http, $l
 
     }
     $scope.signout = function() {
-        pcAuth.logoutUser().then(function() {
+      var updatedPersonaData = {
+        personaDetails: $scope.personaLayout,
+        _id: $routeParams.personaId
+      };
+
+        pcAuth.logoutUser(updatedPersonaData).then(function() {
             $scope.username = "";
             $scope.password = "";
             $location.path('/');
