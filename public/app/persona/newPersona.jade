@@ -19,7 +19,7 @@
 
       li(gridster-item="persona.grid", ng-repeat="persona in personaLayout.personaInfo")
          image-upload
-         div.widget-content-holder
+         div.widget-content-holder(gridster-dynamic-height)
            div.ps-widget-header
             h4(ng-click="contentEnable()", ng-blur="cardEnable()", contenteditable="true", ng-model="persona.cardInfo.cardTitle"){{persona.cardInfo.cardTitle}}
             div.ps-widget-header-buttons
@@ -28,8 +28,8 @@
              button.btn.btn-default.pull-right(data-toggle="modal" data-backdrop="false" data-target="#imageUpload{{$index}}" ng-click="cardArrange()")
               i.fa.fa-image
 
-           div.ps-widget-body
-            img.widgetImage(ng-show="persona.cardInfo.croppedImage" ng-src="{{persona.cardInfo.croppedImage}}")
-            div.widget-body-text(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
+           img.widgetImage(ng-show="persona.cardInfo.croppedImage" ng-src="{{persona.cardInfo.croppedImage}}")
+           div.widget-body-text(ng-click="contentEnable()" ng-blur="cardEnable()" contenteditable="true", ng-model="persona.cardInfo.cardBody"){{persona.cardInfo.cardBody}}
+
 
 

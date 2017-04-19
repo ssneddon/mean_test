@@ -10,13 +10,14 @@ angular.module('app').controller('pcSavedPersonaCtrl', function($scope, $routePa
 
   $scope.gridsterOpts = {
     columns: 12
-    , margins: [30, 30]
+    , margins: [30, 10]
     , pushing: true
     , floating: true
     , resizable: {
       enabled: true
       , handles: ['se']
     }
+    , width: 'auto'
   };
 
   $scope.addNewCard = function() {

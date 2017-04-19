@@ -2,11 +2,11 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
 
     $scope.gridsterOpts = {
         columns: 12
-        , margins: [30, 30]
+        , margins: [30, 10]
         , pushing: true
         , floating: true
         , resizable: {
-            enabled: false
+            enabled: true
             , handles: ['se']
         }
     };
@@ -62,6 +62,7 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
                 enabled: false
             }
         }
+
     };
     $scope.cardEnable = function() {
 

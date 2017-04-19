@@ -35,6 +35,15 @@ footer p {
   background: #fff;
   border-radius: 5px;
 }
+.gridster .gridster-item:hover .handle-se {
+  border-color: transparent transparent #005952;
+}
+.widget-content-holder {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  overflow: scroll;
+}
 .ps-widget-header {
   position: relative;
   color: #005952;
@@ -63,7 +72,7 @@ footer p {
 .widget-body-text {
   padding: 3%;
   border: 1px dotted #808080;
-  max-height: 105px;
+  max-height: 25%;
 }
 .ps-dashboard-header {
   font-size: 20px;
