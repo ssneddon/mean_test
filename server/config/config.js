@@ -9,7 +9,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: 'mongodb://PCOAdev:pcoapassword@ds027628.mlab.com:27628/pcoa_user',
+        db: 'mongodb://PCOAuser:sudden@ds027628.mlab.com:27628/pcoa_user',
         port: process.env.PORT || 80
     }
 }
