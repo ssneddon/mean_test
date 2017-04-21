@@ -20,7 +20,7 @@ function gridsterDynamicHeight(){
     },
                  function(newVal, oldVal) {
 
-      var rowHeightOption = 95; // Change this value with your own rowHeight option
+      var rowHeightOption = 75; // Change this value with your own rowHeight option
       var height = rowHeightOption * scope.$parent.persona.grid.sizeY;
       if(newVal > height){
 

@@ -1,4 +1,4 @@
-angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIdentity, pcNotifier) {
+angular.module('app').controller('pcPersonaCtrl', function($scope, $location, pcAuth, pcIdentity, pcNotifier) {
 
     $scope.gridsterOpts = {
         columns: 12
@@ -15,18 +15,18 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
 
         "personaTitle": "Persona Title",
         "personaInfo": [
-            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":0},"cardInfo":{"cardTitle":"Persona Name"}},
-            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":4},"cardInfo":{"cardTitle":"Biography"}},
-            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":8},"cardInfo":{"cardTitle":"Identifiers"}},
-            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":0},"cardInfo":{"cardTitle":"Demographics"}},
-            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":4},"cardInfo":{"cardTitle":"Goals"}},
-            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":8},"cardInfo":{"cardTitle":"Always/Never"}}
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":0},"cardInfo":{"cardTitle":"Persona Name","cardBody":"Text here..."}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":4},"cardInfo":{"cardTitle":"Biography","cardBody":"Text here..."}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":0,"col":8},"cardInfo":{"cardTitle":"Identifiers","cardBody":"Text here..."}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":0},"cardInfo":{"cardTitle":"Demographics","cardBody":"Text here..."}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":4},"cardInfo":{"cardTitle":"Goals","cardBody":"Text here..."}},
+            {"grid":{"sizeX":4,"sizeY":4,"row":3,"col":8},"cardInfo":{"cardTitle":"Always/Never","cardBody":"Text here..."}}
         ]
 
     };
 
     $scope.addNewCard = function() {
-        var newCard = {"grid":{"sizeX":4,"sizeY":4},"cardInfo":{"cardTitle":"New Card"}};
+        var newCard = {"grid":{"sizeX":4,"sizeY":4},"cardInfo":{"cardTitle":"New Card","cardBody":"Text here..."}};
 
         $scope.personaLayout.personaInfo.push(newCard);
         console.log($scope.personaLayout);
@@ -49,10 +49,12 @@ angular.module('app').controller('pcPersonaCtrl', function($scope, pcAuth, pcIde
 
         pcAuth.addUserPersona(newPersonaData).then(function() {
             pcNotifier.notify('Your new persona has been added to your account');
+            $location.path('/main');
         }, function(reason) {
             pcNotifier.error(reason);
         })
     };
+
 
     $scope.contentEnable = function() {
         $scope.gridsterOpts = {

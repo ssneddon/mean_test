@@ -21,7 +21,7 @@ angular.module('app').controller('pcSavedPersonaCtrl', function($scope, $routePa
   };
 
   $scope.addNewCard = function() {
-    var newCard = {"grid":{"sizeX":4,"sizeY":3},"cardInfo":{"cardTitle":"New Card"}};
+    var newCard = {"grid":{"sizeX":4,"sizeY":3},"cardInfo":{"cardTitle":"New Card","cardBody":"Text here..."}};
     // newCardCopy = angular.copy(newCard);
 
     $scope.personaLayout.personaInfo.push(newCard);
@@ -45,7 +45,7 @@ angular.module('app').controller('pcSavedPersonaCtrl', function($scope, $routePa
     var personaId = $scope.personaId;
 
     pcAuth.deleteUserPersona(deletedPersonaData, personaId).then(function() {
-      pcNotifier.notify('Your persona has been delete');
+      pcNotifier.notify('Your persona has been deleted');
       $location.path('/main');
 
     }, function(reason) {
@@ -62,7 +62,7 @@ angular.module('app').controller('pcSavedPersonaCtrl', function($scope, $routePa
 
     pcAuth.updateUserPersona(updatedPersonaData).then(function() {
       pcNotifier.notify('Your persona has been updated');
-      $location.path('/main');
+      //$location.path('/main');
 
     }, function(reason) {
       pcNotifier.error(reason);

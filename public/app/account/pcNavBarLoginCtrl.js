@@ -13,12 +13,11 @@ angular.module('app').controller('pcNavBarLoginCtrl', function($scope, $http, $r
 
     }
     $scope.signout = function() {
-      var updatedPersonaData = {
-        personaDetails: $scope.personaLayout,
-        _id: $routeParams.personaId
-      };
+     var newUserData = {
+      personaCollection: $scope.identity.currentUser.personaCollection
+     }
 
-        pcAuth.logoutUser(updatedPersonaData).then(function() {
+        pcAuth.logoutUser(newUserData).then(function() {
             $scope.username = "";
             $scope.password = "";
             $location.path('/');

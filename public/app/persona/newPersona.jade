@@ -1,17 +1,15 @@
 .container
  nav.navbar.navbar-default.persona-navbar
   div.container-fluid
-   div.navbar-header
-    a.navbar-brand
-    img(alt="Brand", src="...")
    div.personaTitle
     h1(contenteditable="true", ng-model="personaLayout.personaTitle"){{personaLayout.personaTitle}}
-   button.btn.btn-default.navbar-btn.pull-right(ng-click="saveDashboardLayout()")
-    i.fa.fa-check-circle
-    span.personaButtonText Save Persona
-   button.btn.btn-default.navbar-btn.pull-right(ng-click="addNewCard()")
-    i.fa.fa-plus-circle
-    span.personaButtonText New Card
+   div.button-holder
+       button.btn.btn-default.navbar-btn.pull-right(ng-click="saveDashboardLayout()")
+        i.fa.fa-check-circle
+        span.personaButtonText Save New Persona
+       button.btn.btn-default.navbar-btn.pull-right(ng-click="addNewCard()")
+        i.fa.fa-plus-circle
+        span.personaButtonText New Card
 
  div(gridster="gridsterOpts")
 

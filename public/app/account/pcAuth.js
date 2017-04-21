@@ -101,12 +101,14 @@ angular.module('app').factory('pcAuth', function($http, $window, pcIdentity, $q,
       },
       // update persona from collection
 
-      logoutUser: function(updatedPersonaData) {
+      logoutUser: function(newUserData) {
 
             var dfd = $q.defer();
-
+            var clone = angular.copy(pcIdentity.currentUser);
+            angular.extend(clone, newUserData);
+            clone.$update();
             $http.post('/logout', {logout:true}).then(function() {
-
+                pcIdentity.currentUser = clone;
                 pcIdentity.currentUser = undefined;
                 dfd.resolve();
             });
