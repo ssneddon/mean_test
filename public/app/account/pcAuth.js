@@ -106,13 +106,15 @@ angular.module('app').factory('pcAuth', function($http, $window, pcIdentity, $q,
             var dfd = $q.defer();
             var clone = angular.copy(pcIdentity.currentUser);
             angular.extend(clone, newUserData);
-            clone.$update();
-            pcIdentity.currentUser = clone;
-            $http.post('/logout', {logout:true}).then(function() {
-
+            clone.$update().then(function() {
+                pcIdentity.currentUser = clone;
+                $http.post('/logout', {logout:true})
                 pcIdentity.currentUser = undefined;
                 dfd.resolve();
+            }, function(response) {
+                dfd.reject(response.data.reason);
             });
+
             return dfd.promise;
         },
 
