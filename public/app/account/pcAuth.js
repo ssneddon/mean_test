@@ -107,8 +107,9 @@ angular.module('app').factory('pcAuth', function($http, $window, pcIdentity, $q,
             var clone = angular.copy(pcIdentity.currentUser);
             angular.extend(clone, newUserData);
             clone.$update();
+            pcIdentity.currentUser = clone;
             $http.post('/logout', {logout:true}).then(function() {
-                pcIdentity.currentUser = clone;
+
                 pcIdentity.currentUser = undefined;
                 dfd.resolve();
             });
