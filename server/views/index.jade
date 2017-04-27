@@ -2,11 +2,17 @@
 extends ../includes/layout
 //this block main-content will be plugged into the layout view 'block' element
 block main-content
- .navbar.navbar-inverse.navbar-fixed-top
+ nav.navbar.navbar-inverse.navbar-fixed-top.navbar-toggleable-md
+    button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
     .container
      .navbar-header
-      a.navbar-brand(href="/main") PCOA
-     .navbar-collapse.collapse
+      a.navbar-brand(href="/main")
+        img(src="/images/PCOA_logo.png")
+     .navbar-collapse.collapse#navbarSupportedContent
       ul.nav.navbar-nav
        li
         a(href="/main") Home
@@ -21,3 +27,4 @@ block main-content
 // this is wher angular will serve the view loads
 //ngView is a directive that complements the $route service by including the rendered template of the current route into the main layout (index.html) file. Every time the current route changes, the included view changes with it according to the configuration of the $route service.
 // The views that are loaded into the ng-view directive are controller in the app.js file in public/app
+

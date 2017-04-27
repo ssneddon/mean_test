@@ -1,6 +1,9 @@
 body
     padding-top 61px
 
+.content
+    margin:20px
+
 .navbar-header a.navbar-brand
     font-size: 40px
 h6
@@ -108,6 +111,7 @@ footer
   float:left
   margin-left:5%
   color: #005952
+  max-width: 400px
 
 .button-holder
     float:right
@@ -183,13 +187,43 @@ form .progress
     width:50%
     margin:auto
 
+.navbar-brand img
+    width:100px
+
 @media only screen and (max-width: 991px)
+    .navbar-collapse.collapse
+        display: none !important
+
+    .navbar-collapse.collapse.in
+        display: block !important
+
+    .navbar-header .collapse, .navbar-toggle
+        display:block !important
+
+    .navbar-header
+        float:none
+
     .ps-widget-header h4
         font-size:80%
-    .widget-body-text
-        //font-size:60% !important
 
-@media only screen and (max-width: 630px)
+    .widget-body-text
+        margin-top:0px;
+
+    .personaTitle
+        float:none
+        margin:auto
+
+    .personaTitle h1
+        text-align:center
+
+    .button-holder
+        float:none
+        text-align:center
+
+    .persona-navbar .btn
+        float:none !important
+
+@media only screen and (max-width: 670px)
     .widget-content-holder
         position:initial
 
