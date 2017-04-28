@@ -3,5 +3,7 @@
  .panel-body
   .row(ng-repeat="persona in personas")
    .col-md-9
-    a(ng-href="/persona/{{persona._id}}") {{persona.personaDetails.personaTitle}}
+    ul
+        li.persona-list
+            a(ng-href="/persona/{{persona._id}}") {{persona.personaDetails.personaTitle}}
    //.col-md-9 {{course.name}}
